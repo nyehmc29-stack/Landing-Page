@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="navbar">
+    <a href="#home" class="logo"><span>H</span> HARDCORE<span class="accent">TOPUP</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="index.html">Games</a>
+      <a href="index.html">Cara Top Up</a>
+      <a href="index.html">Promo</a>
+      <a href="index.html">FAQ</a>
+    </nav>
+    </header>
+    <main class="login">
+        <div class="kartu">
+            <div class="kepala">
+                <h1>Hardcore TopUp</h1>
+            </div>
+            <form class="proses-login" id="form-login">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan Username">
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan Password">
+                <br>
+                <button type="button" id="tombol">Login</button>
+            </form>
+        </div>
+    </main>
+    <script src="login.js"></script>
+</body>
+</html>
