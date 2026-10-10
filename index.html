@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardcore topup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+      <a href="#home" class="logo"><span>H</span> HARDCORE<span class="accent">TOPUP</span></a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+
+      <nav id="navMenu">
+        <a href="#home">TopUp</a>
+        <a href="#lacak-pesanan">Lacak Pesanan</a>
+        <a href="#promo">Promo</a>
+        <a href="#testimoni">Ulasan & Rating</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#topup" class="nav-button">Top Up Sekarang</a>
+    </header>
+
+    <main>
+      <button id="backToTopBtn" aria-label="Kembali ke atas">↑</button>
+      <a href="https://wa.me/6283107934329" class="floating-cs" target="_blank" rel="noopener noreferrer" aria-label="Hubungi Customer Service">Hubungi CS</a>
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <h1>LEVEL UP.<br><span>PLAY HARDER.</span></h1>
+          <p>
+            Top up diamond dan currency game favoritmu dengan proses cepat,
+            harga bersahabat, dan pembayaran yang praktis.
+          </p>
+          <div class="hero-actions">
+            <a href="#topup" class="primary-btn">Top Up Sekarang <span>→</span></a>
+            <a href="#games" class="secondary-btn">Lihat Games</a>
+          </div>
+          <div class="trust-row">
+            <div><strong class="counter" data-target="10" data-suffix="K+">0</strong><small>Transaksi</small></div>
+            <div><strong class="counter" data-target="4.9" data-decimal="1" data-suffix="/5">0</strong><small>Rating User</small></div>
+            <div><strong class="counter" data-target="24" data-suffix="/7">0</strong><small>Layanan</small></div>
+          </div>
+        </div>
+      
+
+        <div class="hero-visual">
+          <div class="glow"></div>
+          <div class="controller">🎮</div>
+          <div class="floating-card card-one"><b>Instant</b><small>Proses cepat</small></div>
+          <div class="floating-card card-two"><b>Secure</b><small>Pembayaran aman</small></div>
+          <div class="floating-card card-three"><b>Best Price</b><small>Harga kompetitif</small></div>
+        </div>
+      </section>
+
+      <section class="games section" id="games">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">GAME FAVORIT</span>
+            <h2>Top Up Game Kamu</h2>
+          </div>
+          <p>Pilih game favorit dan mulai top up dalam hitungan detik.</p>
+        </div>
+
+        <div class="game-grid">
+          <div class="game-grid">
+            <button class="game-card active" data-game="Mobile Legends" data-currency="Diamond">
+              <div class="game-icon ml"><img src="ML.png" alt="Mobile Legends"></div>
+              <div><h3>Mobile Legends</h3><span>Diamond</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Free Fire" data-currency="Diamond">
+              <div class="game-icon ff"><img src="FF.webp" alt="Free Fire"></div>
+              <div><h3>Free Fire</h3><span>Diamond</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Roblox" data-currency="Robux">
+              <div class="game-icon rb"><img src="ROBLOX.png" alt="Roblox"></div>
+              <div><h3>Roblox</h3><span>Robux</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Valorant" data-currency="VP">
+              <div class="game-icon val"><img src="VALORANT.jfif" alt="Valorant"></div>
+              <div><h3>Valorant</h3><span>Valorant Points</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="PUBG Mobile" data-currency="UC">
+              <div class="game-icon pubg"><img src="PUBGM.webp" alt="PUBG Mobile"></div>
+              <div><h3>PUBG Mobile</h3><span>UC</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Magic Chess: GO GO" data-currency="Diamond">
+              <div class="game-icon mc"><img src="mcgg.png" alt="Magic Chess: GO GO"></div>
+              <div><h3>Magic Chess: GO GO</h3><span>Diamond</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Honor Of kings" data-currency="Token">
+              <div class="game-icon hok"><img src="hok.png" alt="Honor Of Kings"></div>
+              <div><h3>Honor Of Kings</h3><span>Token</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Call Of Duty: Mobile" data-currency="CP">
+              <div class="game-icon codm"><img src="codm.jpg" alt="Call Of Duty: Mobile"></div>
+              <div><h3>CODM</h3><span>CP</span></div>
+              <b>→</b>
+            </button>
+            <button class="game-card" data-game="Delta Force Garena" data-currency="Delta Coin">
+              <div class="game-icon dfg"><img src="df.png" alt="Delta Force Garena"></div>
+              <div><h3>Delta Force Garena</h3><span>Coin</span></div>
+              <b>→</b>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="topup section" id="topup">
+      <div class="topup-box">
+      <div class="topup-info">
+        <span class="eyebrow">QUICK CHECKOUT</span>
+        <h2>Top Up <span id="selectedGame">Mobile Legends</span></h2>
+        <p>Masukkan data akun, pilih nominal, lalu lanjutkan ke pembayaran.</p>
+
+        <div class="steps-mini">
+          <div class="mini-step active"><span>1</span><p>Data</p></div>
+          <i></i>
+          <div class="mini-step"><span>2</span><p>Nominal</p></div>
+          <i></i>
+          <div class="mini-step"><span>3</span><p>Bayar</p></div>
+        </div>
+      </div> 
+
+      <form id="topupForm">
+        <label for="playerId">ID Pemain</label>
+        <input type="text" id="playerId" placeholder="Contoh: 123456789" required>
+
+        <label for="serverId">Server / Zone <span>(opsional)</span></label>
+        <input type="text" id="serverId" placeholder="Contoh: 1234">
+
+        <label id="nominalLabel">Pilih Nominal Diamond</label>
+        <div class="nominal-grid" id="nominalGrid"></div>
+
+        <label for="payment">Metode Pembayaran</label>
+        <select id="payment">
+          <option>QRIS</option>
+          <option>DANA</option>
+          <option>OVO</option>
+          <option>GoPay</option>
+          <option>Transfer Bank</option>
+        </select>
+        <div class="checkout-summary">
+        <span>Total Pembayaran</span>
+        <strong id="totalPrice">Rp 15.000</strong>
+        </div>
+
+      <div class="kode-promo">
+        <input type="text" id="promoCode" placeholder="Masukkan kode promo (jika ada)">
+        <button type="button" id="tombol-promo" class="applyPromo">Terapkan</button>
+      </div>
+
+      <button type="submit" class="primary-btn full">Lanjutkan Pembayaran →</button>
+      </form>
+
+      </div> 
+      </section>
+
+      <section class="how section" id="how">
+        <div class="center-heading">
+          <span class="eyebrow">MUDAH & CEPAT</span>
+          <h2>Top Up Dalam 3 Langkah</h2>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card"><span>01</span><div class="step-icon">🎮</div><h3>Pilih Game</h3><p>Pilih game favoritmu dan masukkan ID pemain dengan benar.</p></article>
+          <article class="step-card"><span>02</span><div class="step-icon">💎</div><h3>Pilih Nominal</h3><p>Tentukan jumlah diamond, Robux, atau currency yang kamu butuhkan.</p></article>
+          <article class="step-card"><span>03</span><div class="step-icon">⚡</div><h3>Bayar & Selesai</h3><p>Pilih metode pembayaran dan tunggu proses top up selesai.</p></article>
+        </div>
+      </section>
+
+      <section class="promo section" id="promo">
+        <div class="promo-content">
+          <span class="eyebrow">SPECIAL OFFER</span>
+          <h2>WELCOME BONUS <span>10%</span></h2>
+          <p>Dapatkan bonus diskon 10% untuk transaksi pertama kamu.</p>
+          <button class="coupon" id="copyCoupon">HARDCORE10 <span>Copy</span></button>
+        </div>
+        <div class="promo-art">10<span>%</span></div>
+      </section>
+
+      <section class="lacak-pesanan section" id="lacak-pesanan">
+        <div class="center-heading">
+          <span class="eyebrow">CEK STATUS PESANAN</span>
+          <h2>Lacak Pesanan</h2>
+        </div>
+
+        <form id="lacakForm" class="lacak-pesanan">
+          <label for="orderId">Masukkan ID Pesanan</label>
+          <input type="text" id="orderId" placeholder="Contoh: ORD123456789" required>
+          <button type="button" class="primary-btn full" id="lacakPesanan">Lacak Pesanan</button>
+        </form>
+        <div id="lacakResult"></div>
+
+      </section>
+
+      <section class="testimoni section" id="testimoni">
+        <div class="center-heading">
+          <span class="eyebrow">WHAT OUR PLAYERS SAY</span>
+          <h2>Ulasan & Rating</h2>
+        </div>
+
+        <div class="testimoni-slider-container">
+          <button class="slider-btn prev-btn" id="prevTestimoni" aria-label="Sebelumnya">‹</button>
+          <div class="testimoni-viewport">
+          <div class="testimoni-slider" id="testimoniSlider">
+        
+          <article class="testimoni-card">
+            <div class="testimoni-content">
+              <div class="stars">★★★★★</div>
+              <p>"Top up di Hardcore TopUp cepat banget, cuma beberapa detik langsung masuk ke akun saya. Recommended!"</p>
+              <div class="user-info">
+                <strong>@zyft23.</strong>
+                <small>Valorant Player</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimoni-card">
+            <div class="testimoni-content">
+              <div class="stars">★★★★★</div>
+              <p>"Harga diamond di sini lebih murah dibanding tempat lain, dan prosesnya gampang banget."</p>
+              <div class="user-info">
+                <strong>@Hooman_Lizard.</strong>
+                <small>Mobile Legends & Free Fire Player</small>
+              </div>
+            </div>
+          </article>
+          <article class="testimoni-card">
+            <div class="testimoni-content">
+              <div class="stars">★★★★★</div>
+              <p>"Saya suka karena bisa top up berbagai game favorit saya di satu tempat. Praktis dan aman."</p>
+              <div class="user-info">
+                <strong>@Mythrion.</strong>
+                <small>Mobile Legends Player</small>
+              </div>
+            </div>
+          </article>
+          </div>
+          </div>
+          <button class="slider-btn next-btn" id="nextTestimoni" aria-label="Berikutnya">›</button>
+        </div>
+
+        <div class="slidercontrol" id="sliderControl">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </section>
+
+      <section class="faq section" id="faq">
+        <div class="center-heading">
+          <span class="eyebrow">NEED HELP?</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>Apakah top up langsung masuk ke akun?</summary>
+            <p>Setelah pembayaran terverifikasi, proses top up akan diproses. Anda juga dapat melacak status pesanan Anda kapan saja.</p>
+          </details>
+          <details>
+            <summary>Game apa saja yang tersedia?</summary>
+            <p>Saat ini hanya menyediakan Mobile Legends, Free Fire, Roblox, dan Valorant.</p>
+          </details>
+          <details>
+            <summary>Apakah pembayaran aman?</summary>
+            <p>Secara sistem koneksi website kami aman. Pastikan Anda hanya mentransfer ke nomor rekening resmi atas nama perusahaan/toko kami yang tertera di halaman checkout, dan jangan pernah memberikan data rahasia seperti PIN atau OTP kepada siapa pun.</p>
+          </details>
+          <details>
+            <summary>Bagaimana jika salah memasukkan ID?</summary>
+            <p>Selalu periksa kembali ID pemain sebelum melakukan pembayaran. Sistem akan menampilkan peringatan sebelum checkout.</p>
+          </details>
+        </div>
+      </section>
+      <section class="contact section" id="contact">
+        <div class="center-heading">
+          <span class="eyebrow">GET IN TOUCH</span>
+          <h2>Mulai Percakapan</h2>
+        </div>
+
+        <div class="contact-info">
+          <p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi kami.</p>
+          <a href="https://wa.me/6283107934329" class="primary-btn" target="_blank">Hubungi Kami ↗</a>
+        </div>
+      </main>
+
+  <footer>
+    <div class="footer-main">
+      <div>
+        <a href="#home" class="logo"><span>H</span> HARDCORE<span class="accent">TOPUP</span></a>
+        <p>Top up game favoritmu dengan cepat dan aman.</p>
+        <h4>Butuh Bantuan?</h4>
+        <a href="https://wa.me/6283107934329" class="button-link" target="_blank">Hubungi Kami</a>
+      </div>
+      <div class="footer-links">
+        <a href="#games">Games</a>
+        <a href="#how">Cara Top Up</a>
+        <a href="#promo">Promo</a>
+        <a href="#lacak-pesanan">Lacak Pesanan</a>
+        <a href="#testimoni">Testimoni</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Hardcore TopUp. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+    
+</body>
+</html>
