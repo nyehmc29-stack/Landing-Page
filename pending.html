@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menunggu Pembayaran - Hardcore TopUp</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pending-container {
+      max-width: 580px;
+      margin: 40px auto;
+      padding: 30px 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-out);
+      text-align: center;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255, 193, 7, 0.15);
+      color: #ffc107;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+    .timer-box {
+      margin: 20px 0;
+      padding: 15px;
+      background: var(--surface-deep);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-in);
+    }
+    .timer {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .detail-list {
+      text-align: left;
+      margin: 25px 0;
+      padding: 15px 0;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .detail-row span { color: var(--muted); }
+    .detail-row strong { color: var(--text); }
+    
+    .payment-instruction-box {
+      margin: 20px 0;
+      padding: 20px;
+      background: var(--surface-deep);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-in);
+      text-align: center;
+    }
+    .qris-img-wrap {
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .qris-img-wrap img {
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .account-card {
+      background: var(--surface);
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-small);
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .amount-display {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 10px 0;
+    }
+    .copy-btn, .app-btn {
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .copy-btn {
+      background: var(--accent);
+      color: #23342f;
+      box-shadow: var(--shadow-out);
+    }
+    .app-btn {
+      background: var(--surface-deep);
+      color: var(--text);
+      box-shadow: var(--shadow-out);
+      margin-top: 12px;
+    }
+    .app-btn:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html#home" class="logo"><span>H</span> HARDCORE<span class="accent">TOPUP</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html#home">TopUp</a>
+      <a href="index.html#lacak-pesanan">Lacak Pesanan</a>
+      <a href="index.html#promo">Promo</a>
+      <a href="index.html#testimoni">Ulasan & Rating</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <a href="index.html#topup" class="nav-button">Top Up Sekarang</a>
+  </header>
+
+  <main class="section">
+    <div class="pending-container">
+      <span class="status-badge">⏳ MENUNGGU PEMBAYARAN</span>
+      <h2>Selesaikan Pembayaran</h2>
+      <p style="color: var(--muted); font-size: 0.9rem;">
+        Silakan lakukan pembayaran sesuai nominal tepat di bawah ini.
+      </p>
+
+      <div class="timer-box">
+        <small style="color: var(--muted);">Batas Waktu Pembayaran</small>
+        <div class="timer" id="countdown">14:59</div>
+      </div>
+
+      <div class="payment-instruction-box" id="paymentInstruction">
+      </div>
+
+      <div class="detail-list">
+        <div class="detail-row"><span>No. Transaksi:</span> <strong id="trxId">-</strong></div>
+        <div class="detail-row"><span>Game:</span> <strong id="gameName">-</strong></div>
+        <div class="detail-row"><span>ID Pemain:</span> <strong id="playerId">-</strong></div>
+        <div class="detail-row"><span>Item:</span> <strong id="itemName">-</strong></div>
+        <div class="detail-row"><span>Metode Bayar:</span> <strong id="payMethod">-</strong></div>
+      </div>
+
+      <div style="display: flex; gap: 10px; flex-direction: column;">
+        <a id="btnConfirmWa" href="#" class="primary-btn full" target="_blank">Lanjut & Konfirmasi via WhatsApp →</a>
+        <a href="struk.html" class="primary-btn full" style="background: var(--surface); color: var(--text); box-shadow: var(--shadow-out);">Cek Status / Lihat Struk</a>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("open");
+      });
+
+      navMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => navMenu.classList.remove("open"));
+      });
+    }
+
+    const toast = document.getElementById("toast");
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    const orderData = JSON.parse(localStorage.getItem("pendingOrder")) || {
+      trxId: "HTU-" + Math.floor(10000000 + Math.random() * 90000000),
+      game: "Mobile Legends",
+      playerId: "123456789",
+      item: "86 Diamond",
+      payment: "QRIS",
+      total: "Rp 15.000"
+    };
+
+    document.getElementById("trxId").textContent = orderData.trxId;
+    document.getElementById("gameName").textContent = orderData.game;
+    document.getElementById("playerId").textContent = orderData.playerId;
+    document.getElementById("itemName").textContent = orderData.item;
+    document.getElementById("payMethod").textContent = orderData.payment;
+
+    const instructionBox = document.getElementById("paymentInstruction");
+    const payment = orderData.payment.toUpperCase();
+
+    let storeUrl = "https://play.google.com";
+    let storeName = "Aplikasi E-Wallet";
+    if (payment.includes("DANA")) {
+      storeUrl = "https://play.google.com/store/apps/details?id=id.dana";
+      storeName = "DANA";
+    } else if (payment.includes("OVO")) {
+      storeUrl = "https://play.google.com/store/search?q=ovo&c=apps";
+      storeName = "OVO";
+    } else if (payment.includes("GOPAY")) {
+      storeUrl = "https://play.google.com/store/apps/details?id=com.gojek.app";
+      storeName = "GoPay / Gojek";
+    }
+
+    if (payment.includes("QRIS")) {
+      instructionBox.innerHTML = `
+        <small style="color: var(--muted); display: block; margin-bottom: 8px;">Scan Kode QRIS di bawah ini:</small>
+        <div class="qris-img-wrap">
+          <img src="1000450296.jpg" alt="QRIS Hardcore TopUp">
+        </div>
+        <div class="amount-display">${orderData.total}</div>
+        <button class="copy-btn" onclick="copyAmount('${orderData.total}')">📋 Salin Nominal Pembayaran</button>
+      `;
+    } else {
+      instructionBox.innerHTML = `
+        <div class="account-card">
+          <span style="font-size: 0.85rem; color: var(--muted);">Total Pembayaran:</span>
+          <div class="amount-display">${orderData.total}</div>
+          <small style="color: var(--muted); display: block; margin-bottom: 15px;">Penerima: <strong>Hardcore TopUp</strong></small>
+          
+          <button class="copy-btn" onclick="copyAmount('${orderData.total}')">📋 Salin Nominal Pembayaran</button>
+          <br>
+          <a href="${storeUrl}" target="_blank" class="app-btn">Buka Aplikasi ${storeName} ↗</a>
+        </div>
+      `;
+    }
+
+    function copyAmount(amountText) {
+      const cleanAmount = amountText.replace(/[^0-9]/g, '');
+      navigator.clipboard.writeText(cleanAmount);
+      showToast("Nominal " + amountText + " berhasil disalin!");
+    }
+
+    const waText = `Halo Admin Hardcore TopUp, saya ingin melakukan pembayaran:\n\n` +
+      `📌 No Trx: *${orderData.trxId}*\n` +
+      `🎮 Game: *${orderData.game}*\n` +
+      `🆔 ID Pemain: *${orderData.playerId}*\n` +
+      `📦 Item: *${orderData.item}*\n` +
+      `💳 Metode: *${orderData.payment}*\n` +
+      `💰 Total: *${orderData.total}*\n\n` +
+      `Mohon berikan detail/petunjuk pembayaran selanjutnya. Terima kasih!`;
+    document.getElementById("btnConfirmWa").href = `https://wa.me/6283107934329?text=${encodeURIComponent(waText)}`;
+
+    let duration = 15 * 60;
+    const timerEl = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      if (--duration < 0) {
+        clearInterval(countdownInterval);
+        timerEl.textContent = "KEDALUWARSA";
+        timerEl.style.color = "#ff4747";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
