@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menunggu Pembayaran - Hardcore TopUp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#home" class="logo"><span>H</span> HARDCORE<span class="accent">TOPUP</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html#home">TopUp</a>
+      <a href="index.html#lacak-pesanan">Lacak Pesanan</a>
+      <a href="index.html#promo">Promo</a>
+      <a href="index.html#testimoni">Ulasan & Rating</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <a href="index.html#topup" class="nav-button">Top Up Sekarang</a>
+  </header>
+
+  <main class="section">
+    <div class="pending-container">
+      <span class="status-badge">⏳ MENUNGGU PEMBAYARAN</span>
+      <h2>Selesaikan Pembayaran</h2>
+      <p style="color: var(--muted); font-size: 0.9rem;">
+        Silakan lakukan pembayaran sesuai instruksi di bawah ini.
+      </p>
+
+      <div class="timer-box">
+        <small style="color: var(--muted);">Batas Waktu Pembayaran</small>
+        <div class="timer" id="countdown">14:59</div>
+      </div>
+
+      <div class="payment-instruction-box" id="paymentInstruction">
+      </div>
+
+      <div class="detail-list">
+        <div class="detail-row"><span>No. Transaksi:</span> <strong id="trxId">-</strong></div>
+        <div class="detail-row"><span>Game:</span> <strong id="gameName">-</strong></div>
+        <div class="detail-row"><span>ID Pemain:</span> <strong id="playerId">-</strong></div>
+        <div class="detail-row"><span>Item:</span> <strong id="itemName">-</strong></div>
+        <div class="detail-row"><span>Metode Bayar:</span> <strong id="payMethod">-</strong></div>
+      </div>
+
+      <div style="display: flex; gap: 10px; flex-direction: column;">
+        <a id="btnConfirmWa" href="#" class="primary-btn full" target="_blank">Lanjut & Konfirmasi via WhatsApp →</a>
+        <a href="struk.html" class="primary-btn full" style="background: var(--surface); color: var(--text); box-shadow: var(--shadow-out);">Cek Status / Lihat Struk</a>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
